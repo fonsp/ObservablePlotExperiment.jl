@@ -1,5 +1,5 @@
 
-
+export tidyzip
 
 function tidyzip(; kwargs...)
     @jsl """(() => {
