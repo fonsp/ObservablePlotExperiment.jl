@@ -1,5 +1,5 @@
 name = "ObservablePlots"
-uuid = "828d9ff0-206c-6161-646e-6576656f7344"
+uuid = "216e6a69-7265-646e-696e-656d6d65777a"
 license = "MIT"
 authors = ["Fons van der Plas <fons@plutojl.org>"]
 version = "0.1.0"
