@@ -1,4 +1,4 @@
-module ObservablePlots
+module ObservablePlotExperiment
 
 
 export @jsl

@@ -1,4 +1,4 @@
-name = "ObservablePlots"
+name = "ObservablePlotExperiment"
 uuid = "216e6a69-7265-646e-696e-656d6d65777a"
 license = "MIT"
 authors = ["Fons van der Plas <fons@plutojl.org>"]
