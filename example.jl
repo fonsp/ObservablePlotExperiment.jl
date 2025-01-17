@@ -11,7 +11,7 @@ begin
 end
 
 # ╔═╡ b3656548-3be2-47ed-898e-3634003eee0b
-using Revise, ObservablePlots
+using Revise, ObservablePlotExperiment
 
 # ╔═╡ 76ec430d-3c01-4545-8be3-e82528257c33
 using CSV, DataFrames
@@ -21,6 +21,21 @@ using Dates
 
 # ╔═╡ 9b80c3d6-ed15-499f-806b-6fa1091c417a
 using HypertextLiteral
+
+# ╔═╡ b28904fd-8cc9-41fc-9806-748ede4cc6cd
+md"""
+Combining with Plot:
+"""
+
+# ╔═╡ 7a19ed10-00f8-452d-8a73-a6f810adffbd
+md"""
+Options:
+"""
+
+# ╔═╡ 5f744aee-dadd-4b04-a067-7a102a36ae83
+md"""
+# Getting the data
+"""
 
 # ╔═╡ 464672aa-cc48-11ef-3173-9bb6140273d2
 url1 = "https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.csv"
@@ -37,6 +52,9 @@ d = CSV.read(download(url1), DataFrame; comment="#")
 # ╔═╡ 063d8376-2c3b-4d74-abe8-582fe6bd9d1d
 d2 = CSV.read(download(url2), DataFrame; comment="#", header=0)
 
+# ╔═╡ 1cfc7eb7-a190-4072-9c3a-f3abac8befa7
+
+
 # ╔═╡ cdfa1d2a-baa0-4831-a6b1-69385efa8eb3
 dates = [Date(x[1], x[2], x[3]) for x in eachrow(d2)]
 
@@ -45,6 +63,9 @@ Base.PkgId(Base.UUID("ade2ca70-3891-5945-98fb-dc099432e06a"), "Dates")
 
 # ╔═╡ 5b695b6b-e818-4276-9618-c79e8f208e82
 Base.loaded_modules[Base.PkgId(Base.UUID("ade2ca70-3891-5945-98fb-dc099432e06a"), "Dates")]
+
+# ╔═╡ 97d30320-ff55-4d2c-90bc-935ca233f1cc
+tidyzip(x=[1,2,3], y=[6,7])
 
 # ╔═╡ 3e91edb7-3a29-4288-b8e0-826296e06d20
 vals = [x[5] for x in eachrow(d2)]
@@ -98,7 +119,7 @@ plot(
 )
 
 # ╔═╡ d349e5b1-6be3-4399-af82-3322529b20a5
-
+plot()
 
 # ╔═╡ e76769de-3fa6-46c5-b91f-a86e9045c7e6
 (x=(label="index",), )|> typeof
@@ -139,8 +160,31 @@ z = randn(101)
 # ╔═╡ 654fe84c-783f-421e-9680-85ab2435f5b6
 data = z[1:100] .+ z[2:101] .+ 2
 
+# ╔═╡ d6aed7bc-972d-4916-915d-2c6adddc9768
+data
+
 # ╔═╡ 04152403-abde-4b8f-83ad-1b35bc374d32
 dot(enumerate(data))
+
+# ╔═╡ 36a7cd4f-e957-45ab-951e-1ee90a9ad333
+lineY(data)
+
+# ╔═╡ 0bffc169-cbb4-42e2-ba6c-8dc35fa606e7
+lineX(data)
+
+# ╔═╡ c05bb2f6-7a7c-4e55-88fe-18b803b339c0
+plot(
+	lineY(data),
+	dot(enumerate(data))
+)
+
+# ╔═╡ b3fe231e-2656-4e97-b026-977e6b854125
+plot(
+	(
+		lineY(data .+ i)
+		for i in 1:10
+	)...,
+)
 
 # ╔═╡ 5872fbe3-702b-4ebf-8cc9-ec9322c4aa7b
 peaks = map(enumerate(data)) do (i,x)
@@ -167,6 +211,15 @@ plot(
 dotY(data; x=eachindex(data))
 
 # ╔═╡ Cell order:
+# ╠═d6aed7bc-972d-4916-915d-2c6adddc9768
+# ╠═04152403-abde-4b8f-83ad-1b35bc374d32
+# ╠═36a7cd4f-e957-45ab-951e-1ee90a9ad333
+# ╠═0bffc169-cbb4-42e2-ba6c-8dc35fa606e7
+# ╟─b28904fd-8cc9-41fc-9806-748ede4cc6cd
+# ╠═c05bb2f6-7a7c-4e55-88fe-18b803b339c0
+# ╠═b3fe231e-2656-4e97-b026-977e6b854125
+# ╟─7a19ed10-00f8-452d-8a73-a6f810adffbd
+# ╟─5f744aee-dadd-4b04-a067-7a102a36ae83
 # ╠═06be8ac3-fa55-449d-ad3f-8162bd36c6b7
 # ╠═464672aa-cc48-11ef-3173-9bb6140273d2
 # ╠═55d66238-68c1-4c7a-8159-f411fa663260
@@ -174,19 +227,20 @@ dotY(data; x=eachindex(data))
 # ╠═76ec430d-3c01-4545-8be3-e82528257c33
 # ╠═3525308c-a7d7-4373-8826-f5a46a21c42a
 # ╠═063d8376-2c3b-4d74-abe8-582fe6bd9d1d
+# ╠═1cfc7eb7-a190-4072-9c3a-f3abac8befa7
 # ╠═cdfa1d2a-baa0-4831-a6b1-69385efa8eb3
 # ╠═383c54e5-9315-4b52-b77b-43f73dc252dd
 # ╠═7ea7d253-7410-44d8-bbda-3fe6a20888ef
 # ╠═5b695b6b-e818-4276-9618-c79e8f208e82
 # ╠═1a8a376d-6a66-4c77-b5f5-5929a1e330a5
 # ╠═52ddb495-724a-4572-aa55-0f490ac77c40
+# ╠═97d30320-ff55-4d2c-90bc-935ca233f1cc
 # ╠═3e91edb7-3a29-4288-b8e0-826296e06d20
 # ╠═0c89c8ad-7ee9-4dcf-8bc3-f3a1bf3f73a4
 # ╠═b5ab10a0-d0c1-477e-8985-8cfbbc38fc6b
 # ╠═9b80c3d6-ed15-499f-806b-6fa1091c417a
 # ╠═b3656548-3be2-47ed-898e-3634003eee0b
 # ╠═4c9a553c-2319-4d22-9afb-5c35232e4c29
-# ╠═04152403-abde-4b8f-83ad-1b35bc374d32
 # ╠═e7e02789-bc11-449c-863a-86a604bfff00
 # ╠═d349e5b1-6be3-4399-af82-3322529b20a5
 # ╠═6a13b7fe-f12c-4518-a1df-9bbd55174765
