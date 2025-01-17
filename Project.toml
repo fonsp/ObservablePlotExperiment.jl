@@ -2,7 +2,7 @@ name = "ObservablePlotExperiment"
 uuid = "216e6a69-7265-646e-696e-656d6d65777a"
 license = "MIT"
 authors = ["Fons van der Plas <fons@plutojl.org>"]
-version = "1.0.0"
+version = "0.1.0"
 
 [deps]
 AbstractPlutoDingetjes = "6e696c72-6542-2067-7265-42206c756150"

@@ -4,10 +4,7 @@ Fast exploratory plotting – Julia wrapper for the [Observable Plot](https://o
 The Observable library is amazing and the combination with Julia through HypertextLiteral.jl works crazy well!
 
 
-# Experimental!!
-This library is just a fun experiment!! And with some patience it might create really beautiful plots!
+# How to use
 
-## Warning ⚠️
-I am just trying to have fun, so this library will not be super well maintained! There will probably not be any docs, tests or any guarantees of that kind1 💛
-
+The aim of the library is to have API that is super close to the original [Observable Plot](https://observablehq.com/plot/) library. **Check out [their documentation](https://observablehq.com/plot/features/marks).**
 
