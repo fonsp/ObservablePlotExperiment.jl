@@ -19,6 +19,11 @@ Een paar voorbeelden
 ## Lijntjes
 
 ```julia
+using ObservablePlotExperiment
+```
+
+
+```julia
 data = rand(100)
 ```
 
@@ -99,9 +104,6 @@ Hier is een voorbeeld uit `example.jl` waar ik op verschillende manieren dezelfd
 
 ```julia
 dates::Vector{Dates.Date}
-```
-
-```julia
 vals::Vector{Float64}
 ```
 
