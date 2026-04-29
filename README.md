@@ -2,16 +2,17 @@
 
 > <img src="https://unpkg.com/ionicons@7.1.0/dist/svg/list-outline.svg" width="20" align="top"> Tip: use the table of contents button in the top right of this README to navigate!
 
-Fast exploratory plotting – Julia wrapper for the [Observable Plot](https://observablehq.com/plot/) library.
+Fast exploratory plotting – Julia wrapper for the [Observable Plot](https://observablehq.com/plot/) library. This is a package for high-performance browser-based exploratory plotting in Julia. It installs super fast (<5 secs precompile). It works in Pluto, and possibly also Jupyter, VS Code, etc.
 
-This is a package for high-performance browser-based exploratory plotting in Julia. It installs super fast (<5 secs precompile).
-
-The Observable library is amazing and the combination with Julia through HypertextLiteral.jl works crazy well!
-
+> This is an experiment from January 2025 to wrap the amazing Observable library in Julia through HypertextLiteral.jl. I think the result is really good, the combination works very well! Give it a try, and feel free to contribute and continue the project if you like it!
 
 # How to use
+The aim of the library is to have API that is super close to the original [Observable Plot](https://observablehq.com/plot/) library. **Check out [their documentation](https://observablehq.com/plot/features/marks).** Not everything from the original library is implemented yet, so feel free to dig in and add more features if you need them!
 
-The aim of the library is to have API that is super close to the original [Observable Plot](https://observablehq.com/plot/) library. **Check out [their documentation](https://observablehq.com/plot/features/marks).**
+
+### Translating API
+The API is very similar to the original Observable Plot library, but there are some differences. You essentially need to **translate** the original API to ObservablePlotExperiment.jl syntax.
+
 
 # Some examples
 A few examples
@@ -151,6 +152,6 @@ tidyzip(x=[1,2,3],y=[6,7,8]) ==
 
 Want to learn more how to write a package like this? Take a look at Pluto's JS documentation: https://plutojl.org/en/docs/advanced-widgets/ 
 
-The source code for this package is actually super easy, take a look!
+The source code for this package is actually super easy, take a look! And maybe you want to contribute?
 
 
