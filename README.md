@@ -20,6 +20,19 @@ A few examples
 > ## Want to see these examples in action?
 > Check the notebook `example.jl` in this repo!!
 
+<table>
+  <tr>
+    <td><img src="screenshots/lineY.png" alt="lineY"></td>
+    <td><img src="screenshots/dot enumerate.png" alt="dot enumerate"></td>
+    <td><img src="screenshots/plot line dot.png" alt="plot line dot"></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/plot line repeat.png" alt="plot line repeat"></td>
+    <td><img src="screenshots/text filter peaks.png" alt="text filter peaks"></td>
+    <td><img src="screenshots/cell co2.png" alt="cell co2"></td>
+  </tr>
+</table>
+
 
 
 ## Little lines
