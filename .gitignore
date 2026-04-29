@@ -1,0 +1,5 @@
+
+Manifest.toml
+.claude/
+.DS_Store
+pluto_state_cache
