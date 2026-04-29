@@ -186,11 +186,6 @@ md"""
 Combining with Plot:
 """
 
-# ╔═╡ 7a19ed10-00f8-452d-8a73-a6f810adffbd
-md"""
-Options:
-"""
-
 # ╔═╡ 5f744aee-dadd-4b04-a067-7a102a36ae83
 md"""
 # Getting the data
@@ -203,7 +198,10 @@ url1 = "https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.csv"
 url2 = "https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_daily_mlo.csv"
 
 # ╔═╡ 1e735495-ef76-433a-b3a4-dd787fa4f669
+# ╠═╡ disabled = true
+#=╠═╡
 Text(read(download(url2), String))
+  ╠═╡ =#
 
 # ╔═╡ 3525308c-a7d7-4373-8826-f5a46a21c42a
 d = CSV.read(download(url1), DataFrame; comment="#")
@@ -216,12 +214,6 @@ d2 = CSV.read(download(url2), DataFrame; comment="#", header=0)
 
 # ╔═╡ cdfa1d2a-baa0-4831-a6b1-69385efa8eb3
 dates = [Date(x[1], x[2], x[3]) for x in eachrow(d2)]
-
-# ╔═╡ 7ea7d253-7410-44d8-bbda-3fe6a20888ef
-Base.PkgId(Base.UUID("ade2ca70-3891-5945-98fb-dc099432e06a"), "Dates")
-
-# ╔═╡ 5b695b6b-e818-4276-9618-c79e8f208e82
-Base.loaded_modules[Base.PkgId(Base.UUID("ade2ca70-3891-5945-98fb-dc099432e06a"), "Dates")]
 
 # ╔═╡ 97d30320-ff55-4d2c-90bc-935ca233f1cc
 tidyzip(x=[1,2,3], y=[6,7])
@@ -259,11 +251,11 @@ cell(tidyzip(
 
 # ╔═╡ 52ddb495-724a-4572-aa55-0f490ac77c40
 cell(nothing; 
-	fill=vals[1:2000], 
-	x=dayofmonth.(dates[1:2000]), 
-	y=month.(dates[1:2000]), 
-	fy=year.(dates[1:2000]),
-).plot(x=(label="asdf",))
+	fill=vals[440:920], 
+	x=dayofmonth.(dates[440:920]), 
+	y=month.(dates[440:920]), 
+	fy=year.(dates[440:920]),
+).plot(x=(label="day",), y=(label="month",), fy=(label="year",))
 
 # ╔═╡ 0c89c8ad-7ee9-4dcf-8bc3-f3a1bf3f73a4
 # line(dates, vals)
@@ -291,9 +283,6 @@ plot(
 # ╔═╡ d349e5b1-6be3-4399-af82-3322529b20a5
 plot()
 
-# ╔═╡ e76769de-3fa6-46c5-b91f-a86e9045c7e6
-(x=(label="index",), )|> typeof
-
 # ╔═╡ 37c1b129-f631-472a-bba8-9e4766d5739f
 md"""
 IDEA! when you pass in props that observablehq does not know but they exist in Plots/makie then we can show hints
@@ -316,7 +305,7 @@ plot(
 lineY(vals; tip=true)
 
 # ╔═╡ c8224122-8307-46e4-85c9-82ed6591ba5b
-lineY(vals; x=smart_embed_data(dates))
+lineY(vals; x=ObservablePlotExperiment.smart_embed_data(dates))
 
 # ╔═╡ 9125e779-2903-40bc-b2f0-57864f4defd2
 
@@ -365,7 +354,6 @@ end
 
 # ╔═╡ 6a13b7fe-f12c-4518-a1df-9bbd55174765
 plot(
-	# dot(enumerate(data); ),
 	lineY(data; tip=false, marker=true),
 	text(enumerate(data); 
 		lineAnchor="bottom", 
@@ -373,12 +361,21 @@ plot(
 		filter=peaks,
 	),
 	x=(label="index"),
-	# y=(type="log",),
 	height=200,
 )
 
-# ╔═╡ 1576f9f3-74d0-4c70-8e33-8a54ec79e4f8
-dotY(data; x=eachindex(data))
+# ╔═╡ 0e96533e-0420-4fd4-90ee-0786a2d98fe5
+md"""
+# Pkg setup
+
+This is needed because this notebook is in the same repo as the package. Normally you would just do
+
+```julia
+using ObservablePlotExperiment
+```
+
+
+"""
 
 # ╔═╡ Cell order:
 # ╟─fec4e333-9ac1-48b1-af9e-c521e62dc5e0
@@ -394,34 +391,26 @@ dotY(data; x=eachindex(data))
 # ╟─b28904fd-8cc9-41fc-9806-748ede4cc6cd
 # ╠═c05bb2f6-7a7c-4e55-88fe-18b803b339c0
 # ╠═b3fe231e-2656-4e97-b026-977e6b854125
-# ╟─7a19ed10-00f8-452d-8a73-a6f810adffbd
 # ╟─5f744aee-dadd-4b04-a067-7a102a36ae83
-# ╠═06be8ac3-fa55-449d-ad3f-8162bd36c6b7
+# ╠═76ec430d-3c01-4545-8be3-e82528257c33
 # ╠═464672aa-cc48-11ef-3173-9bb6140273d2
 # ╠═55d66238-68c1-4c7a-8159-f411fa663260
 # ╠═1e735495-ef76-433a-b3a4-dd787fa4f669
-# ╠═76ec430d-3c01-4545-8be3-e82528257c33
 # ╠═3525308c-a7d7-4373-8826-f5a46a21c42a
 # ╠═063d8376-2c3b-4d74-abe8-582fe6bd9d1d
 # ╠═1cfc7eb7-a190-4072-9c3a-f3abac8befa7
 # ╠═cdfa1d2a-baa0-4831-a6b1-69385efa8eb3
 # ╠═383c54e5-9315-4b52-b77b-43f73dc252dd
-# ╠═7ea7d253-7410-44d8-bbda-3fe6a20888ef
-# ╠═5b695b6b-e818-4276-9618-c79e8f208e82
 # ╠═1a8a376d-6a66-4c77-b5f5-5929a1e330a5
 # ╠═52ddb495-724a-4572-aa55-0f490ac77c40
 # ╠═97d30320-ff55-4d2c-90bc-935ca233f1cc
 # ╠═d9329375-5915-4868-96e2-4d9bf5594df7
 # ╠═3e91edb7-3a29-4288-b8e0-826296e06d20
 # ╠═0c89c8ad-7ee9-4dcf-8bc3-f3a1bf3f73a4
-# ╠═b5ab10a0-d0c1-477e-8985-8cfbbc38fc6b
-# ╠═9b80c3d6-ed15-499f-806b-6fa1091c417a
-# ╠═b3656548-3be2-47ed-898e-3634003eee0b
 # ╠═4c9a553c-2319-4d22-9afb-5c35232e4c29
 # ╠═e7e02789-bc11-449c-863a-86a604bfff00
 # ╠═d349e5b1-6be3-4399-af82-3322529b20a5
 # ╠═6a13b7fe-f12c-4518-a1df-9bbd55174765
-# ╠═e76769de-3fa6-46c5-b91f-a86e9045c7e6
 # ╠═5872fbe3-702b-4ebf-8cc9-ec9322c4aa7b
 # ╠═37c1b129-f631-472a-bba8-9e4766d5739f
 # ╠═9a4b7cd3-c436-48ca-9d61-214f76b217fe
@@ -431,4 +420,8 @@ dotY(data; x=eachindex(data))
 # ╠═32c9e066-d734-4226-bcf9-c8f2e9aa01e0
 # ╠═eaea893c-2d29-45fb-b63f-b866b9ca9b9f
 # ╠═654fe84c-783f-421e-9680-85ab2435f5b6
-# ╠═1576f9f3-74d0-4c70-8e33-8a54ec79e4f8
+# ╟─0e96533e-0420-4fd4-90ee-0786a2d98fe5
+# ╠═06be8ac3-fa55-449d-ad3f-8162bd36c6b7
+# ╠═b5ab10a0-d0c1-477e-8985-8cfbbc38fc6b
+# ╠═9b80c3d6-ed15-499f-806b-6fa1091c417a
+# ╠═b3656548-3be2-47ed-898e-3634003eee0b
