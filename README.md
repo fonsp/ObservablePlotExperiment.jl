@@ -6,20 +6,6 @@ Fast exploratory plotting – Julia wrapper for the [Observable Plot](https://ob
 
 > This is an experiment from January 2025 to wrap the amazing Observable library in Julia through HypertextLiteral.jl. I think the result is really good, the combination works very well! Give it a try, and feel free to contribute and continue the project if you like it!
 
-# How to use
-The aim of the library is to have API that is super close to the original [Observable Plot](https://observablehq.com/plot/) library. **Check out [their documentation](https://observablehq.com/plot/features/marks).** Not everything from the original library is implemented yet, so feel free to dig in and add more features if you need them!
-
-
-### Translating API
-The API is very similar to the original Observable Plot library, but there are some differences. You essentially need to **translate** the original API to ObservablePlotExperiment.jl syntax.
-
-
-# Some examples
-A few examples
-
-> ## Want to see these examples in action?
-> Check the notebook `example.jl` in this repo!!
-
 <table>
   <tr>
     <td><img src="screenshots/lineY.png" alt="lineY"></td>
@@ -32,6 +18,22 @@ A few examples
     <td><img src="screenshots/cell co2.png" alt="cell co2"></td>
   </tr>
 </table>
+
+
+> ## Want to see these examples in action?
+> Check the notebook `example.jl` in this repo!!
+
+
+# How to use
+The aim of the library is to have API that is super close to the original [Observable Plot](https://observablehq.com/plot/) library. **Check out [their documentation](https://observablehq.com/plot/features/marks).** Not everything from the original library is implemented yet, so feel free to dig in and add more features if you need them!
+
+
+### Translating API
+The API is very similar to the original Observable Plot library, but there are some differences. You essentially need to **translate** the original API to ObservablePlotExperiment.jl syntax.
+
+
+# Some examples
+A few examples
 
 
 
